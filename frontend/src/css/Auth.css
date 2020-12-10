@@ -1,0 +1,18 @@
+.logo {
+    width: 100%;
+    height: auto;
+    margin: 20px 0 20px 0;
+}
+form {
+    border: solid 1px rgb(255, 172, 172);
+    padding: 20px;
+    width: 100%;
+}
+.auth-form {
+    display: flex;
+    flex-flow: column nowrap;
+}
+.auth-form label {
+    display: flex;
+    flex-flow: column nowrap;
+}
