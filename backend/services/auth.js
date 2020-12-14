@@ -1,8 +1,8 @@
-const userRepo = require('../repositories/user');
-const {User} = require("../models/user");
+const UserRepo = require('../repositories/user');
 const {validateEmail} = require('./validateEmail');
 const nodemailer = require("nodemailer");
 const sgTransport = require("nodemailer-sendgrid-transport");
+const { SignedUser } = require('../models/SignedUser');
 
 
 const signup = async (email, password) => {
@@ -10,21 +10,22 @@ const signup = async (email, password) => {
     if(!validateResult) {
         throw new Error('The entered email is invalid!')
     }
-    const user = await userRepo.findUserByEmail(email);
-    if(user) {
+    const requiredUser = await UserRepo.findUserByEmail(email);
+    if(requiredUser) {
         throw new Error("The entered email is already associated with another account");
     }
-    const newUser = new User(email);
+    const newUser = new SignedUser(email);
     newUser.generatePassword(password);
-    const savedUser = await userRepo.createUser(newUser);
-    return savedUser;
+    const user = await UserRepo.createUser(newUser);
+    const jwt = user.generateJSONWebToken();
+    return {jwt, user};
 };
 const login = async (email, password) => {
     const validateResult = validateEmail(email);
     if(!validateResult) {
         throw new Error('The entered email is invalid!')
     }
-    const user = await userRepo.findUserByEmail(email);
+    const user = await UserRepo.findUserByEmail(email);
     if(!user) {
         throw new Error("Email is not existed")
     }
@@ -34,21 +35,12 @@ const login = async (email, password) => {
     const jwt = user.generateJSONWebToken();
     return {jwt, user}
 }
-
-/// WILL BE FINISHED AFTER DECEMBER THE TENTH NIGHT
-// const sendEmail = async (user, host) => {
-//     const jwt = user.generateJSONWebToken();
-//     const options = {auth: {api_user: user.email}};
-//     const client = nodemailer.createTransport(sgTransport(options));
-//     const emailMessage = {
-//         from: 'No-reply@appweb.Tinder',
-//         to: user.email,
-//         subject: 'Account Verification Token',
-//         text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + host + '\/confirmation\/' + jwt + '.\n' 
-//     }
-//     client.sendMail(emailMessage, err => {
-//         console.log(err.message);
-//     })
-// }
-
-module.exports = {signup, login}; 
+const persistIn = async (email) => {
+    const user = await UserRepo.findUserByEmail(email);
+    if(user) {
+        const jwt = user.generateJSONWebToken();
+        return {jwt, user}
+    }
+    return null
+}
+module.exports = {signup, login, persistIn}; 

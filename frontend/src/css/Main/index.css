@@ -1,0 +1,25 @@
+.site-bar {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  border: solid 2px rgb(253, 145, 145);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+.site-icon-wrapper {
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(253, 145, 145);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  font-size: 150%;
+}
+.screen-container {
+    flex-flow: column nowrap;
+    justify-content: center;
+    border: solid 2px  rgb(253, 145, 145);
+    width: 100%;
+}

@@ -1,0 +1,42 @@
+.screen-container {
+    
+}
+.result-nope {
+  width: 150px;
+  position: absolute;
+  color: red;
+  border: 3px solid red;
+  top: 50%;
+  left: 45%;
+  border-radius: 5px;
+  display: block;
+}
+.result-like {
+  width: 150px;
+  position: absolute;
+  color: rgb(0, 247, 255);
+  border: 3px solid rgb(0, 247, 255);
+  top: 50%;
+  left: 50%;
+  border-radius: 5px;
+  display: block;
+}
+.btn-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.btn-like {
+    display: flex;
+    align-items: center;
+    color: rgb(0, 247, 255);
+    font-size: 250%;
+}
+.btn-nope {
+    display: flex;
+    align-items: center;
+    color: red;
+    font-size: 280%;
+    font-weight: bolder;
+}

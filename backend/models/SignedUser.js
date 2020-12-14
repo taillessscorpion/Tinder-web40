@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
-class User {
+class SignedUser {
     email;
     matches;
     followings;
@@ -15,30 +15,18 @@ class User {
     isDeclared;
     password;
     salt;
-    constructor(email, matches,
-        followings,
-        displayName,
-        birthday,
-        gender,
-        livesIn,
-        bio,
-        photos,
-        location,
-        isDeclared) {
+    constructor(email) {
         this.email = email;
-        this.matches = matches;
-        this.followings = followings;
-        this.displayName = displayName;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.livesIn = livesIn;
-        this.bio = bio;
-        this.photos = photos;
-        this.location = location;
-        this.isDeclared = isDeclared;
-    }
-    calculateAge(birthday) {
-        return age = new Date().getFullYear() - parseInt(birthday);
+        this.matches = [];
+        this.followings = [];
+        this.displayName = '';
+        this.birthday = '';
+        this.gender = '';
+        this.livesIn = '';
+        this.bio = '';
+        this.photos = "";
+        this.location = '';
+        this.isDeclared = false;
     }
     generatePassword(password) {
         this.salt = crypto.randomBytes(128).toString("base64");
@@ -56,30 +44,18 @@ class User {
     toJSONForSelf() {
         return {
             email: this.email,
+            displayName: this.displayName,
             matches: this.matches,
             followings: this.followings,
-            displayName: this.displayName,
             birthday: this.birthday,
             gender: this.gender,
             livesIn: this.livesIn,
             bio: this.bio,
             photos: this.photos,
             location: this.location,
-            isDeclared: this.isDeclared
-        }
-    }
-    toJSONForSwipe() {
-        return {
-            email: this.email,
-            age: this.age,
-            displayName: this.displayName,
-            gender: this.gender,
-            livesIn: this.livesIn,
-            bio: this.bio,
-            photos: this.photos,
-            location: this.location
+            isDeclared: this.isDeclared,
         }
     }
 };
 
-module.exports = {User};
+module.exports = {SignedUser};
