@@ -1,3 +1,18 @@
+.background-container {
+    width: 100vw;
+    height: 100vh;
+    z-index: -99;
+  }
+  .body-wrapper {
+      height: 100vh;
+      padding: 0;
+  }
+.bg-trans-black {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.bg-trans-white {
+    background-color: rgba(255, 255, 255, 0.6);
+}
 .wrapper {
     display: flex;
     flex-flow: column nowrap;

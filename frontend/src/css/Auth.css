@@ -1,10 +1,8 @@
-.logo {
-    width: 100%;
-    height: auto;
-    margin: 20px 0 20px 0;
-}
+/* linear gradient linear-gradient(to top right, #ff4e7a, #ff8258) */
+/* base color rgb(253, 145, 145) */
+
 form {
-    border: solid 1px rgb(255, 172, 172);
+    border: solid 1px  rgb(253, 145, 145);
     padding: 20px;
     width: 100%;
 }
@@ -15,4 +13,69 @@ form {
 .auth-form label {
     display: flex;
     flex-flow: column nowrap;
+}
+.declare-bio {
+    resize: none;
+    padding: 10px;
+    min-height: 100px;
+}
+.declare-photo-wrapper {
+    display: flex;
+    position: relative;
+    width: 100px;
+}
+.declare-photo-reveal {
+    display: block;
+    width: 100px;
+    height: 125px;
+    border-radius: 10px;
+    background-color: rgb(255, 241, 241);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.declare-photo-input-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top right, #ff4e7ad5, #ff8258);
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	border-radius: 50%;
+    width: 21px;
+    height: 21px;
+}
+.declare-photo-input-wrapper:hover, .declare-photo-input-wrapper:active, .declare-photo-input-wrapper:focus {
+    background: linear-gradient(to top right, #ff8258d5, #ff4e7a);
+}
+.declare-photo-input {
+    position: absolute;
+    opacity: 0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.declare-photos-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.declare-photo-remove-wrapper{
+    position: absolute;
+    font-size: large;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top right, #b7fdf7d5, #ecf4ff);
+    color: #fd5b5b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	border-radius: 50%;
+    width: 21px;
+    height: 21px;
+}
+.declare-photo-remove-wrapper:hover, .declare-photo-remove-wrapper:active, .declare-photo-remove-wrapper:focus {
+    background: linear-gradient(to top right, #ffffffd5, #c0fffa);
 }

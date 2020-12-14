@@ -1,12 +1,19 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import "../../css/shared.css";
 
-export const LogoBanner = () => {
+export const LogoBanner = props => {
+    const history = useHistory()
+    const handleClick = () => {
+        if (props.goHome) {
+            history.push("/home");
+        } else {
+            history.goBack();
+        }
+    }
     return (
-        <div>
-            <Link to='/home'>
-                <img className='logo' src="/logoRectangle.png" alt="logo"></img>
-            </Link>
+        <div onClick={handleClick}>
+            <img className='logo' src="/logoRectangle.png" alt="logo"></img>
         </div>
     )
 }

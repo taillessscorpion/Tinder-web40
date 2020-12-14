@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
 });
 
 /// delay for axios instance (only local). Not mandatory
-axiosInstance.interceptors.response.use(
-    (config) => new Promise((resolve) => setTimeout(()=> resolve(config), 2000))
-)
+// axiosInstance.interceptors.response.use(
+//     (config) => new Promise((resolve) => setTimeout(()=> resolve(config), 2000))
+// )
 export default axiosInstance;

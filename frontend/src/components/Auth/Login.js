@@ -4,6 +4,7 @@ import '../../css/Auth.css';
 import axios from '../../utils/axios';
 import {LoadingIndicator} from '../shared/LoadingIndicator';
 import AuthCtx from '../../context/auth';
+import { SiteTag } from '../shared/SiteTag';
 
 
 export const Login = () => {
@@ -14,7 +15,7 @@ export const Login = () => {
     const [err, setErr] = useState(null);
     const [isSucceeded, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
-    const {authUser, setAuthUser} = useContext(AuthCtx);
+    const {setAuthUser} = useContext(AuthCtx);
 
     const handleChanges = e => { 
         setValues({
@@ -42,13 +43,14 @@ export const Login = () => {
             localStorage.setItem("jwt", jwt);
             setSuccess(true);
         } catch(err) {
-            setErr(err.message);
+            setErr(err.response.data);
         } finally {
             setLoading(false);
         }
     }
     return(
         <div>
+            <SiteTag text="Log in"/>
             <form className="auth-form" spellCheck="false" onSubmit={handleSubmit}>
                 { loading ? <LoadingIndicator text="Logging in"/> : (<>
                     {err && <div className="error-alert">{err}</div>}

@@ -4,10 +4,10 @@ import {faCircleNotch} from '@fortawesome/free-solid-svg-icons';
 
 export const LoadingIndicator = props => {
     return(
-        <div className="align-items-center d-flex flex-column my-3">
+        <label className="align-items-center d-flex flex-column my-3">
             <div>{props.text}</div>
             <FontAwesomeIcon spin icon={faCircleNotch}/>
-        </div>
+        </label>
     )
 
 }
